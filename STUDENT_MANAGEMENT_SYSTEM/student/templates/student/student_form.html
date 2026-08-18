@@ -1,0 +1,293 @@
+{% extends 'student/innerbase.html' %}
+
+{% block title %}
+{{ page_title }} | Student Core
+{% endblock %}
+
+{% block extra_css %}
+
+<style>
+    .form-header {
+        margin-bottom: 25px;
+    }
+
+    .form-header h1 {
+        color: #211A4C;
+        font-size: 30px;
+        margin-bottom: 7px;
+    }
+
+    .form-header p {
+        color: #77738B;
+        font-size: 14px;
+    }
+
+    .form-card {
+        background: #FFFFFF;
+        border: 1px solid #ECE9FF;
+        border-radius: 22px;
+        padding: 32px;
+    }
+
+    .section-title {
+        color: #211A4C;
+        font-size: 17px;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #F0EEFA;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .field.full {
+        grid-column: 1 / -1;
+    }
+
+    .field label {
+        display: block;
+        color: #25233A;
+        font-size: 13px;
+        font-weight: 800;
+        margin-bottom: 8px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+        width: 100%;
+        border: 1px solid #DED9F5;
+        border-radius: 10px;
+        padding: 13px;
+        font-family: inherit;
+        color: #25233A;
+        outline: none;
+        background: #FFFFFF;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+        border-color: #4C3BCF;
+        box-shadow: 0 0 0 4px rgba(76, 59, 207, .07);
+    }
+
+    .errorlist {
+        color: #C0392B;
+        font-size: 12px;
+        margin: 5px 0;
+        padding-left: 15px;
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        padding-top: 20px;
+        border-top: 1px solid #F0EEFA;
+    }
+
+    .cancel-btn,
+    .save-btn {
+        padding: 13px 22px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 800;
+        border: none;
+        cursor: pointer;
+    }
+
+    .cancel-btn {
+        background: #F0EEFA;
+        color: #5D596D;
+    }
+
+    .save-btn {
+        background: #4C3BCF;
+        color: #FFFFFF;
+    }
+
+    .save-btn:hover {
+        background: #211A4C;
+    }
+
+    @media (max-width: 700px) {
+
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .field.full {
+            grid-column: auto;
+        }
+
+        .form-card {
+            padding: 22px;
+        }
+
+    }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="form-header">
+
+    <h1>
+        {{ page_title }}
+    </h1>
+
+    <p>
+        Fill in the student's personal and academic information.
+    </p>
+
+</div>
+
+
+<div class="form-card">
+
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+
+        <h2 class="section-title">
+            Personal Information
+        </h2>
+
+
+        <div class="form-grid">
+
+            <div class="field">
+                <label>Student Name</label>
+                {{ form.name }}
+                {{ form.name.errors }}
+            </div>
+
+
+            <div class="field">
+                <label>Date of Birth</label>
+                {{ form.date_of_birth }}
+                {{ form.date_of_birth.errors }}
+            </div>
+
+
+            <div class="field">
+                <label>Age</label>
+                {{ form.age }}
+                {{ form.age.errors }}
+            </div>
+
+
+            <div class="field">
+                <label>Gender</label>
+                {{ form.gender }}
+                {{ form.gender.errors }}
+            </div>
+
+
+            <div class="field">
+                <label>Parents Name</label>
+                {{ form.parents_name }}
+                {{ form.parents_name.errors }}
+            </div>
+
+
+            <div class="field">
+                <label>Phone Number</label>
+                {{ form.phone_no }}
+                {{ form.phone_no.errors }}
+            </div>
+
+
+            <div class="field">
+                <label>Email ID</label>
+                {{ form.email_id }}
+                {{ form.email_id.errors }}
+            </div>
+
+
+            <div class="field">
+                <label>Address</label>
+                {{ form.address }}
+                {{ form.address.errors }}
+            </div>
+
+        </div>
+
+
+        <h2 class="section-title">
+            Academic Information
+        </h2>
+
+
+        <div class="form-grid">
+
+            <div class="field">
+                <label>Roll Number</label>
+                {{ form.roll_no }}
+                {{ form.roll_no.errors }}
+            </div>
+
+
+            <div class="field">
+                <label>Course</label>
+                {{ form.course }}
+                {{ form.course.errors }}
+            </div>
+
+
+            <div class="field">
+                <label>Semester</label>
+                {{ form.semester }}
+                {{ form.semester.errors }}
+            </div>
+
+
+            <div class="field">
+                <label>Fees Amount</label>
+                {{ form.fees_amount }}
+                {{ form.fees_amount.errors }}
+            </div>
+
+
+            <div class="field">
+                <label>Marks</label>
+                {{ form.marks }}
+                {{ form.marks.errors }}
+            </div>
+
+
+            <div class="field">
+                <label>Student Image</label>
+                {{ form.image }}
+                {{ form.image.errors }}
+            </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+            <a href="{% url 'student_list' %}" class="cancel-btn">
+                Cancel
+            </a>
+
+            <button type="submit" class="save-btn">
+                {{ button_text }}
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

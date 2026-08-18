@@ -1,0 +1,153 @@
+{% extends 'student/innerbase.html' %}
+
+{% block title %}
+Delete Student | Student Core
+{% endblock %}
+
+{% block extra_css %}
+
+<style>
+    .delete-page {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .delete-card {
+        width: 550px;
+        max-width: 100%;
+        background: #FFFFFF;
+        border: 1px solid #ECE9FF;
+        border-radius: 25px;
+        padding: 45px;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(33, 26, 76, .08);
+    }
+
+    .warning-icon {
+        width: 75px;
+        height: 75px;
+        background: #FFF0EF;
+        color: #C0392B;
+        border-radius: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        margin: 0 auto 25px;
+    }
+
+    .delete-card h1 {
+        color: #211A4C;
+        font-size: 27px;
+        margin-bottom: 12px;
+    }
+
+    .delete-card p {
+        color: #77738B;
+        line-height: 1.7;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .student-name {
+        color: #4C3BCF;
+        font-weight: 800;
+    }
+
+    .delete-actions {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .cancel-btn,
+    .delete-btn {
+        padding: 13px 22px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 14px;
+    }
+
+    .cancel-btn {
+        background: #F0EEFA;
+        color: #5D596D;
+    }
+
+    .delete-btn {
+        background: #C0392B;
+        color: #FFFFFF;
+        border: none;
+        cursor: pointer;
+    }
+
+    @media (max-width: 500px) {
+
+        .delete-card {
+            padding: 30px 20px;
+        }
+
+        .delete-actions {
+            flex-direction: column;
+        }
+
+    }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="delete-page">
+
+    <div class="delete-card">
+
+        <div class="warning-icon">
+            !
+        </div>
+
+        <h1>
+            Delete Student?
+        </h1>
+
+        <p>
+            You are about to permanently delete
+        </p>
+
+        <p class="student-name">
+            {{ student.name }}
+        </p>
+
+        <p>
+            with Roll No. {{ student.roll_no }}.
+            This action cannot be undone.
+        </p>
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="delete-actions">
+
+                <a href="{% url 'student_detail' student.pk %}" class="cancel-btn">
+                    Cancel
+                </a>
+
+                <button type="submit" class="delete-btn">
+                    Yes, Delete
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

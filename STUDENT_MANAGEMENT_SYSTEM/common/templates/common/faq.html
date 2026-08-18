@@ -1,0 +1,144 @@
+{% extends 'common/base.html' %}
+
+{% block title %}
+FAQ | Student Core
+{% endblock %}
+
+{% block extra_css %}
+
+<style>
+    .faq-page {
+        max-width: 900px;
+        margin: auto;
+        padding: 80px 25px;
+    }
+
+    .faq-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .faq-header span {
+        display: inline-block;
+        background: #E8E5FF;
+        color: #4C3BCF;
+        padding: 8px 16px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .faq-header h1 {
+        font-size: 48px;
+        color: #211A4C;
+        margin-bottom: 15px;
+    }
+
+    .faq-header p {
+        color: #77738B;
+    }
+
+    .faq-item {
+        background: #FFFFFF;
+        padding: 25px 28px;
+        border-radius: 16px;
+        margin-bottom: 15px;
+        border: 1px solid #ECE9FF;
+    }
+
+    .faq-item h3 {
+        color: #211A4C;
+        margin-bottom: 10px;
+        font-size: 17px;
+    }
+
+    .faq-item p {
+        color: #77738B;
+        line-height: 1.7;
+        font-size: 14px;
+    }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="faq-page">
+
+    <div class="faq-header">
+
+        <span>
+            HELP CENTER
+        </span>
+
+        <h1>
+            Frequently Asked
+        </h1>
+
+        <p>
+            Find answers to common questions about Student Core.
+        </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <h3>
+            What is Student Core?
+        </h3>
+
+        <p>
+            Student Core is a student management system
+            for managing student personal and academic records.
+        </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <h3>
+            Can I add new students?
+        </h3>
+
+        <p>
+            Yes. After logging in, use the Add Student option
+            from the dashboard sidebar.
+        </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <h3>
+            Can student information be edited?
+        </h3>
+
+        <p>
+            Yes. Every student record can be viewed and edited
+            from the student management section.
+        </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+        <h3>
+            Can a student record be deleted?
+        </h3>
+
+        <p>
+            Yes. The system provides a separate confirmation
+            page before permanently deleting a record.
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

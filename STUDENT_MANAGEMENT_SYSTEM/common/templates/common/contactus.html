@@ -1,0 +1,229 @@
+{% extends 'common/base.html' %}
+
+{% block title %}
+Contact | Student Core
+{% endblock %}
+
+{% block extra_css %}
+
+<style>
+    .contact-page {
+        padding: 80px 8%;
+        display: grid;
+        grid-template-columns: .8fr 1.2fr;
+        gap: 50px;
+        align-items: center;
+    }
+
+    .contact-info h1 {
+        color: #211A4C;
+        font-size: 52px;
+        line-height: 1.1;
+        margin-bottom: 20px;
+    }
+
+    .contact-info h1 span {
+        color: #4C3BCF;
+    }
+
+    .contact-info>p {
+        color: #77738B;
+        line-height: 1.8;
+        margin-bottom: 35px;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .contact-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: #EDEAFF;
+        color: #4C3BCF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contact-item strong {
+        display: block;
+        color: #211A4C;
+        margin-bottom: 4px;
+    }
+
+    .contact-item span {
+        color: #77738B;
+        font-size: 14px;
+    }
+
+    .contact-card {
+        background: #FFFFFF;
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0 20px 60px rgba(33, 26, 76, .08);
+    }
+
+    .contact-card h2 {
+        color: #211A4C;
+        margin-bottom: 25px;
+    }
+
+    .field {
+        margin-bottom: 18px;
+    }
+
+    .field label {
+        display: block;
+        color: #25233A;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .field input,
+    .field textarea {
+        width: 100%;
+        border: 1px solid #DED9F5;
+        border-radius: 11px;
+        padding: 13px;
+        outline: none;
+        font-family: inherit;
+    }
+
+    .field textarea {
+        min-height: 130px;
+        resize: vertical;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+        border-color: #4C3BCF;
+    }
+
+    .contact-btn {
+        width: 100%;
+        border: none;
+        background: #4C3BCF;
+        color: #FFFFFF;
+        padding: 15px;
+        border-radius: 11px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    @media (max-width: 850px) {
+
+        .contact-page {
+            grid-template-columns: 1fr;
+        }
+
+    }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="contact-page">
+
+    <div class="contact-info">
+
+        <h1>
+            Let's talk about
+            <span>Student Core.</span>
+        </h1>
+
+        <p>
+            Have a question or feedback?
+            We'd love to hear from you.
+        </p>
+
+
+        <div class="contact-item">
+
+            <div class="contact-icon">
+                @
+            </div>
+
+            <div>
+                <strong>Email</strong>
+                <span>support@studentcore.com</span>
+            </div>
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <div class="contact-icon">
+                ☎
+            </div>
+
+            <div>
+                <strong>Phone</strong>
+                <span>+91 00000 00000</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="contact-card">
+
+        <h2>
+            Send us a message
+        </h2>
+
+        <form>
+
+            <div class="field">
+
+                <label>
+                    Name
+                </label>
+
+                <input type="text" placeholder="Your name">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Email
+                </label>
+
+                <input type="email" placeholder="Your email">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Message
+                </label>
+
+                <textarea placeholder="Write your message..."></textarea>
+
+            </div>
+
+
+            <button class="contact-btn">
+                Send Message →
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

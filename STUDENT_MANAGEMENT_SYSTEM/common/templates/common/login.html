@@ -1,0 +1,323 @@
+{% extends 'common/base.html' %}
+
+{% block title %}
+Login | Student Core
+{% endblock %}
+
+{% block extra_css %}
+
+<style>
+    .login-page {
+        min-height: calc(100vh - 76px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+    }
+
+    .login-wrapper {
+        width: 950px;
+        max-width: 100%;
+        min-height: 540px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: #FFFFFF;
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 25px 70px rgba(33, 26, 76, .12);
+    }
+
+    .login-left {
+        background: #211A4C;
+        color: #FFFFFF;
+        padding: 55px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .login-left::before {
+        content: "";
+        position: absolute;
+        width: 230px;
+        height: 230px;
+        border-radius: 50%;
+        background: #7B6DFF;
+        opacity: .2;
+        top: -80px;
+        right: -80px;
+    }
+
+    .login-left::after {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: #FFB84D;
+        opacity: .16;
+        bottom: -70px;
+        left: -70px;
+    }
+
+    .login-logo {
+        font-size: 30px;
+        font-weight: 800;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .login-logo span {
+        color: #7B6DFF;
+    }
+
+    .login-left h1 {
+        font-size: 42px;
+        line-height: 1.15;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .login-left p {
+        color: #D7D2EC;
+        line-height: 1.8;
+        position: relative;
+        z-index: 2;
+    }
+
+    .login-features {
+        margin-top: 35px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .feature {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #E6E3F2;
+        font-size: 14px;
+    }
+
+    .feature-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+        background: #4C3BCF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-right {
+        padding: 55px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .login-right h2 {
+        color: #211A4C;
+        font-size: 30px;
+        margin-bottom: 8px;
+    }
+
+    .login-subtitle {
+        color: #77738B;
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+
+    .error-message {
+        background: #FFF1F0;
+        color: #C0392B;
+        border: 1px solid #FFD5D1;
+        padding: 12px 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        color: #25233A;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .form-group input {
+        width: 100%;
+        height: 50px;
+        border: 1px solid #DED9F5;
+        border-radius: 11px;
+        padding: 0 15px;
+        font-size: 14px;
+        color: #25233A;
+        outline: none;
+        transition: .3s;
+    }
+
+    .form-group input:focus {
+        border-color: #4C3BCF;
+        box-shadow: 0 0 0 4px rgba(76, 59, 207, .08);
+    }
+
+    .login-submit {
+        width: 100%;
+        border: none;
+        height: 52px;
+        border-radius: 11px;
+        background: #4C3BCF;
+        color: #FFFFFF;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: .3s;
+        margin-top: 5px;
+    }
+
+    .login-submit:hover {
+        background: #211A4C;
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 750px) {
+
+        .login-wrapper {
+            grid-template-columns: 1fr;
+        }
+
+        .login-left {
+            padding: 40px;
+        }
+
+        .login-left h1 {
+            font-size: 32px;
+        }
+
+        .login-right {
+            padding: 40px;
+        }
+    }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="login-page">
+
+    <div class="login-wrapper">
+
+        <div class="login-left">
+
+            <div class="login-logo">
+                Student <span>Core</span>
+            </div>
+
+            <h1>
+                Welcome back.
+            </h1>
+
+            <p>
+                Access your student management
+                dashboard and keep your academic
+                records organized in one place.
+            </p>
+
+            <div class="login-features">
+
+                <div class="feature">
+                    <div class="feature-icon">✓</div>
+                    Easy student management
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">✓</div>
+                    Organized academic records
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">✓</div>
+                    Simple CRUD operations
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="login-right">
+
+            <h2>
+                Sign in
+            </h2>
+
+            <p class="login-subtitle">
+                Enter your account details to continue.
+            </p>
+
+            {% if messages %}
+
+            {% for message in messages %}
+
+            <div class="error-message">
+                {{ message }}
+            </div>
+
+            {% endfor %}
+
+            {% endif %}
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="form-group">
+
+                    <label>
+                        Username
+                    </label>
+
+                    <input type="text" name="username" placeholder="Enter username" required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Password
+                    </label>
+
+                    <input type="password" name="password" placeholder="Enter password" required>
+
+                </div>
+
+
+                <button type="submit" class="login-submit">
+                    Sign In →
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

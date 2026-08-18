@@ -1,0 +1,185 @@
+{% extends 'common/base.html' %}
+
+{% block title %}
+About | Student Core
+{% endblock %}
+
+{% block extra_css %}
+
+<style>
+    .about-page {
+        padding: 80px 8%;
+    }
+
+    .about-hero {
+        max-width: 850px;
+        margin-bottom: 60px;
+    }
+
+    .tag {
+        display: inline-block;
+        background: #E8E5FF;
+        color: #4C3BCF;
+        padding: 9px 16px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 18px;
+    }
+
+    .about-hero h1 {
+        font-size: clamp(42px, 6vw, 68px);
+        color: #211A4C;
+        line-height: 1.05;
+        margin-bottom: 22px;
+    }
+
+    .about-hero h1 span {
+        color: #4C3BCF;
+    }
+
+    .about-hero p {
+        color: #6D6980;
+        line-height: 1.8;
+        font-size: 17px;
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+    }
+
+    .about-card {
+        background: #FFFFFF;
+        padding: 30px;
+        border-radius: 20px;
+        border: 1px solid #ECE9FF;
+        transition: .3s;
+    }
+
+    .about-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 45px rgba(76, 59, 207, .1);
+    }
+
+    .about-icon {
+        width: 55px;
+        height: 55px;
+        background: #F0EEFF;
+        color: #4C3BCF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .about-card h3 {
+        color: #211A4C;
+        margin-bottom: 12px;
+    }
+
+    .about-card p {
+        color: #77738B;
+        line-height: 1.7;
+        font-size: 14px;
+    }
+
+    @media (max-width: 800px) {
+
+        .about-grid {
+            grid-template-columns: 1fr;
+        }
+
+    }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="about-page">
+
+    <div class="about-hero">
+
+        <div class="tag">
+            ABOUT STUDENT CORE
+        </div>
+
+        <h1>
+            Everything students,
+            <span>organized.</span>
+        </h1>
+
+        <p>
+            Student Core is a modern student management
+            platform created to make student information
+            easier to organize, access and manage.
+        </p>
+
+    </div>
+
+
+    <div class="about-grid">
+
+        <div class="about-card">
+
+            <div class="about-icon">
+                ◈
+            </div>
+
+            <h3>
+                Simple Management
+            </h3>
+
+            <p>
+                Manage student records from a clean
+                and easy-to-use dashboard.
+            </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <div class="about-icon">
+                ◎
+            </div>
+
+            <h3>
+                Organized Records
+            </h3>
+
+            <p>
+                Keep personal, academic and fee
+                information organized in one place.
+            </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <div class="about-icon">
+                ✦
+            </div>
+
+            <h3>
+                Modern Experience
+            </h3>
+
+            <p>
+                A responsive interface designed for
+                efficient everyday management.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,325 @@
+{% extends 'student/innerbase.html' %}
+
+{% block title %}
+{{ student.name }} | Student Core
+{% endblock %}
+
+{% block extra_css %}
+
+<style>
+    .detail-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .detail-header h1 {
+        color: #211A4C;
+        font-size: 30px;
+    }
+
+    .back-btn {
+        color: #4C3BCF;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .profile-card {
+        background: #211A4C;
+        border-radius: 24px;
+        padding: 35px;
+        color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        margin-bottom: 25px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .profile-card::after {
+        content: "";
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: #7B6DFF;
+        opacity: .2;
+        right: -60px;
+        top: -80px;
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 25px;
+        background: #4C3BCF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 35px;
+        font-weight: 800;
+        object-fit: cover;
+        position: relative;
+        z-index: 2;
+    }
+
+    .profile-info {
+        position: relative;
+        z-index: 2;
+    }
+
+    .profile-info h2 {
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    .profile-info p {
+        color: #C8C3DF;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .profile-actions {
+        margin-left: auto;
+        display: flex;
+        gap: 10px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .profile-actions a {
+        padding: 11px 16px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .edit-btn {
+        background: #FFB84D;
+        color: #211A4C;
+    }
+
+    .delete-btn {
+        background: rgba(255, 255, 255, .12);
+        color: #FFFFFF;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .info-card {
+        background: #FFFFFF;
+        border: 1px solid #ECE9FF;
+        border-radius: 20px;
+        padding: 25px;
+    }
+
+    .info-card h3 {
+        color: #211A4C;
+        font-size: 17px;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #F0EEFA;
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 12px 0;
+        border-bottom: 1px solid #F5F3FA;
+    }
+
+    .info-row:last-child {
+        border-bottom: none;
+    }
+
+    .info-label {
+        color: #88849A;
+        font-size: 13px;
+    }
+
+    .info-value {
+        color: #25233A;
+        font-size: 14px;
+        font-weight: 700;
+        text-align: right;
+    }
+
+    @media (max-width: 800px) {
+
+        .profile-card {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .profile-actions {
+            margin-left: 0;
+        }
+
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+
+    }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="detail-header">
+
+    <h1>
+        Student Details
+    </h1>
+
+    <a href="{% url 'student_list' %}" class="back-btn">
+        ← Back to Students
+    </a>
+
+</div>
+
+
+<div class="profile-card">
+
+    {% if student.image %}
+
+    <img src="{{ student.image.url }}" class="profile-image">
+
+    {% else %}
+
+    <div class="profile-image">
+        {{ student.name|first|upper }}
+    </div>
+
+    {% endif %}
+
+
+    <div class="profile-info">
+
+        <h2>
+            {{ student.name }}
+        </h2>
+
+        <p>
+            Roll No: {{ student.roll_no }}
+        </p>
+
+        <p>
+            {{ student.course }} · {{ student.semester }} Semester
+        </p>
+
+    </div>
+
+
+    <div class="profile-actions">
+
+        <a href="{% url 'student_update' student.pk %}" class="edit-btn">
+            Edit
+        </a>
+
+        <a href="{% url 'student_delete' student.pk %}" class="delete-btn">
+            Delete
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="info-grid">
+
+    <div class="info-card">
+
+        <h3>
+            Personal Information
+        </h3>
+
+        <div class="info-row">
+            <span class="info-label">Full Name</span>
+            <span class="info-value">{{ student.name }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Date of Birth</span>
+            <span class="info-value">{{ student.date_of_birth }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Age</span>
+            <span class="info-value">{{ student.age }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Gender</span>
+            <span class="info-value">{{ student.gender }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Phone</span>
+            <span class="info-value">{{ student.phone_no }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Email</span>
+            <span class="info-value">{{ student.email_id }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Parents</span>
+            <span class="info-value">{{ student.parents_name }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Address</span>
+            <span class="info-value">{{ student.address }}</span>
+        </div>
+
+    </div>
+
+
+    <div class="info-card">
+
+        <h3>
+            Academic Information
+        </h3>
+
+        <div class="info-row">
+            <span class="info-label">Roll Number</span>
+            <span class="info-value">{{ student.roll_no }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Course</span>
+            <span class="info-value">{{ student.course }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Semester</span>
+            <span class="info-value">{{ student.semester }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Marks</span>
+            <span class="info-value">{{ student.marks }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Fees Amount</span>
+            <span class="info-value">₹ {{ student.fees_amount }}</span>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

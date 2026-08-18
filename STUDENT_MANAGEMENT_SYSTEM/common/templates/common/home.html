@@ -1,0 +1,475 @@
+{% extends 'common/base.html' %}
+
+{% block title %}
+Student Core | Student Management System
+{% endblock %}
+
+{% block extra_css %}
+
+<style>
+    .home-page {
+        min-height: calc(100vh - 76px);
+        padding: 70px 8%;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1.1fr .9fr;
+        gap: 70px;
+        align-items: center;
+    }
+
+    .hero-content {
+        max-width: 650px;
+    }
+
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #E9E6FF;
+        color: #4C3BCF;
+        padding: 9px 15px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 800;
+        margin-bottom: 22px;
+    }
+
+    .hero-badge span {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #FFB84D;
+    }
+
+    .hero h1 {
+        font-size: clamp(48px, 6vw, 76px);
+        line-height: 1;
+        color: #211A4C;
+        margin-bottom: 25px;
+        letter-spacing: -2px;
+    }
+
+    .hero h1 span {
+        color: #4C3BCF;
+    }
+
+    .hero p {
+        color: #77738B;
+        font-size: 17px;
+        line-height: 1.8;
+        max-width: 570px;
+        margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    .primary-btn {
+        background: #4C3BCF;
+        color: #FFFFFF;
+        text-decoration: none;
+        padding: 14px 23px;
+        border-radius: 11px;
+        font-weight: 800;
+        font-size: 14px;
+        transition: .3s;
+    }
+
+    .primary-btn:hover {
+        background: #211A4C;
+        transform: translateY(-2px);
+    }
+
+    .secondary-btn {
+        background: #FFFFFF;
+        color: #4C3BCF;
+        text-decoration: none;
+        padding: 14px 23px;
+        border-radius: 11px;
+        border: 1px solid #DED9F5;
+        font-weight: 800;
+        font-size: 14px;
+    }
+
+    .hero-visual {
+        position: relative;
+        min-height: 460px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .visual-main {
+        width: 360px;
+        height: 390px;
+        background: #211A4C;
+        border-radius: 35px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 30px 70px rgba(33, 26, 76, .25);
+        padding: 28px;
+    }
+
+    .visual-main::before {
+        content: "";
+        position: absolute;
+        width: 230px;
+        height: 230px;
+        border-radius: 50%;
+        background: #4C3BCF;
+        right: -80px;
+        top: -70px;
+        opacity: .7;
+    }
+
+    .visual-main::after {
+        content: "";
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        background: #FFB84D;
+        left: -60px;
+        bottom: -60px;
+        opacity: .7;
+    }
+
+    .visual-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .visual-logo {
+        color: #FFFFFF;
+        font-weight: 800;
+        font-size: 18px;
+    }
+
+    .visual-logo span {
+        color: #7B6DFF;
+    }
+
+    .visual-dots {
+        display: flex;
+        gap: 5px;
+    }
+
+    .visual-dots i {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #7B6DFF;
+    }
+
+    .visual-card {
+        background: #FFFFFF;
+        border-radius: 20px;
+        padding: 20px;
+        position: absolute;
+        left: 28px;
+        right: 28px;
+        top: 105px;
+        z-index: 3;
+    }
+
+    .visual-card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .visual-avatar {
+        width: 45px;
+        height: 45px;
+        background: #EDEAFF;
+        color: #4C3BCF;
+        border-radius: 13px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+    }
+
+    .visual-card-header strong {
+        display: block;
+        color: #211A4C;
+        font-size: 14px;
+    }
+
+    .visual-card-header span {
+        color: #8A869A;
+        font-size: 11px;
+    }
+
+    .visual-line {
+        height: 9px;
+        background: #F0EEFA;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .visual-line.short {
+        width: 65%;
+    }
+
+    .visual-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .mini-stat {
+        background: #F5F3FF;
+        padding: 13px;
+        border-radius: 12px;
+    }
+
+    .mini-stat strong {
+        display: block;
+        color: #4C3BCF;
+        font-size: 18px;
+    }
+
+    .mini-stat span {
+        color: #88849A;
+        font-size: 10px;
+    }
+
+    .floating-card {
+        position: absolute;
+        background: #FFFFFF;
+        padding: 17px 20px;
+        border-radius: 16px;
+        box-shadow: 0 15px 40px rgba(33, 26, 76, .15);
+        z-index: 5;
+    }
+
+    .floating-card strong {
+        display: block;
+        color: #211A4C;
+        font-size: 22px;
+    }
+
+    .floating-card span {
+        color: #77738B;
+        font-size: 11px;
+    }
+
+    .float-one {
+        top: 55px;
+        right: 0;
+    }
+
+    .float-two {
+        bottom: 45px;
+        left: 0;
+    }
+
+    @media (max-width: 950px) {
+
+        .hero {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-content {
+            text-align: center;
+            margin: auto;
+        }
+
+        .hero p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            justify-content: center;
+        }
+
+    }
+
+    @media (max-width: 500px) {
+
+        .home-page {
+            padding: 50px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+        }
+
+        .hero-visual {
+            transform: scale(.85);
+        }
+
+    }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<section class="home-page">
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                <span></span>
+                SMART STUDENT MANAGEMENT
+            </div>
+
+            <h1>
+                Welcome to
+                <span>Student Core.</span>
+            </h1>
+
+            <p>
+                A modern and simple platform to manage
+                student information, academic records,
+                fees, marks and more — all from one place.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="{% url 'login' %}" class="primary-btn">
+                    Get Started →
+                </a>
+
+                <a href="{% url 'about' %}" class="secondary-btn">
+                    Explore Student Core
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+            <div class="floating-card float-one">
+
+                <strong>
+                    100%
+                </strong>
+
+                <span>
+                    Organized
+                </span>
+
+            </div>
+
+
+            <div class="floating-card float-two">
+
+                <strong>
+                    Easy
+                </strong>
+
+                <span>
+                    Student Management
+                </span>
+
+            </div>
+
+
+            <div class="visual-main">
+
+                <div class="visual-top">
+
+                    <div class="visual-logo">
+                        Student <span>Core</span>
+                    </div>
+
+                    <div class="visual-dots">
+
+                        <i></i>
+                        <i></i>
+                        <i></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="visual-card">
+
+                    <div class="visual-card-header">
+
+                        <div class="visual-avatar">
+                            SC
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Student Dashboard
+                            </strong>
+
+                            <span>
+                                Academic Overview
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="visual-line"></div>
+                    <div class="visual-line short"></div>
+
+
+                    <div class="visual-stats">
+
+                        <div class="mini-stat">
+
+                            <strong>
+                                120+
+                            </strong>
+
+                            <span>
+                                Students
+                            </span>
+
+                        </div>
+
+
+                        <div class="mini-stat">
+
+                            <strong>
+                                86%
+                            </strong>
+
+                            <span>
+                                Average Marks
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
